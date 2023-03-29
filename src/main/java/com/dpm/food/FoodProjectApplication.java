@@ -13,15 +13,18 @@ public class FoodProjectApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(FoodProjectApplication.class, args);
-		
-		AtivacaoClienteService serviceEmail = new AtivacaoClienteService(new NotificadorEmail());
-		AtivacaoClienteService serviceSMS = new AtivacaoClienteService(new NotiFicadorSMS());
+
+		NotificadorEmail notificadorEmail = new NotificadorEmail();
+		NotiFicadorSMS notiFicadorSMS = new NotiFicadorSMS();
+
+		AtivacaoClienteService serviceEmail = new AtivacaoClienteService(notificadorEmail);
+		//AtivacaoClienteService serviceSMS = new AtivacaoClienteService(notiFicadorSMS);
 
 		ClienteEntity joao = new ClienteEntity("joao", "joao@ermail.com", "988776655");
-		ClienteEntity maria = new ClienteEntity("Maria", "maria@ermail.com", "911223344");
+		//ClienteEntity maria = new ClienteEntity("Maria", "maria@ermail.com", "911223344");
 
 		serviceEmail.ativar(joao);
-		serviceSMS.ativar(maria);
+		//serviceSMS.ativar(maria);
 
 	}
 }
